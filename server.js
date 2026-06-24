@@ -23,7 +23,7 @@ const allowedOrigins = [
 ];
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001', 'https://www.shravanpuriarchitects.com'],
+  origin: ['http://localhost:3000', 'http://localhost:3001', 'https://www.shravanpuriarchitects.com','https://dvlarchitects.com'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
   credentials: true
