@@ -18,17 +18,18 @@ const app = express();
 const compression = require('compression');
 app.use(compression());
 
-// Middleware
 const allowedOrigins = [
   'http://93.127.194.6',
   'http://localhost:3000',
   'http://127.0.0.1:3000',
   'http://localhost:3001',
-  'http://127.0.0.1:3001'
+  'http://127.0.0.1:3001',
+  'https://dvlarchitects.com',    // Add this
+  'https://www.dvlarchitects.com' // Add this
 ];
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001', 'https://www.shravanpuriarchitects.com','https://dvlarchitects.com'],
+  origin: allowedOrigins,  // Use the variable instead
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
   credentials: true
