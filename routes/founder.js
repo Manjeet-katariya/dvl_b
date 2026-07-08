@@ -10,10 +10,11 @@ router.get('/', async (req, res) => {
     // If no founder exists, create default one
     if (!founder) {
       founder = await Founder.create({
-        name: 'Elena Rostova',
-        title: 'Principal Architect & CEO',
-        quote: 'Architecture is the silent poetry of our daily lives. We don\'t just build walls; we frame memories, structure workflows, and design the sanctuaries where life unfolds.',
-        image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+        name: 'Ar.lokesh prajapat',
+        title: 'Founder and Principal Architect',
+        quote: 'Architecture is where vision becomes reality and spaces become stories. I believe every project should reflect the people who inhabit it—crafted with purpose, refined through detail, and designed to inspire for generations.',
+        image: 'https://res.cloudinary.com/dh0a24ri6/image/upload/v1778529764/architecture-app/ukew7js8ey1iu6pmksxm.jpg',
+        bio: 'Ar.lokesh prajapat is the Founder and Principal Architect of D.V.L (Dream.Vision.Life) architects, Bachelor of Architecture graduate (2021), he has developed his practice across Jaipur, Ahmedabad, Mumbai and (2019–2025), working on spans luxury residences, commercial spaces, hospitality, and bespoke interiors, with every project guided by thoughtful planning, refined craftsmanship, and meticulous attention to detail.'
       });
     }
     
@@ -75,10 +76,11 @@ router.delete('/', async (req, res) => {
     await Founder.deleteMany({});
     
     const newFounder = await Founder.create({
-      name: 'Elena Rostova',
-      title: 'Principal Architect & CEO',
-      quote: 'Architecture is the silent poetry of our daily lives. We don\'t just build walls; we frame memories, structure workflows, and design the sanctuaries where life unfolds.',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      name: 'Ar.lokesh prajapat',
+      title: 'Founder and Principal Architect',
+      quote: 'Architecture is where vision becomes reality and spaces become stories. I believe every project should reflect the people who inhabit it—crafted with purpose, refined through detail, and designed to inspire for generations.',
+      image: 'https://res.cloudinary.com/dh0a24ri6/image/upload/v1778529764/architecture-app/ukew7js8ey1iu6pmksxm.jpg',
+      bio: 'Ar.lokesh prajapat is the Founder and Principal Architect of D.V.L (Dream.Vision.Life) architects, Bachelor of Architecture graduate (2021), he has developed his practice across Jaipur, Ahmedabad, Mumbai and (2019–2025), working on spans luxury residences, commercial spaces, hospitality, and bespoke interiors, with every project guided by thoughtful planning, refined craftsmanship, and meticulous attention to detail.'
     });
     
     res.json({ 

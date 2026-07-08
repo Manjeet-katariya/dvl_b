@@ -3,7 +3,12 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const express = require('express');
+const dns = require('dns');
+dns.setServers(['8.8.8.8']);
+console.log('DNS Servers:', dns.getServers());
+
 const mongoose = require('mongoose');
+const logger = require('./logger');
 const cors = require('cors');
 
 
