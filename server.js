@@ -29,7 +29,23 @@ const allowedOrigins = [
 ];
 
 app.use(cors({
-  origin: allowedOrigins,  // Use the variable instead
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps, curl, postman)
+    if (!origin) return callback(null, true);
+    
+    // Check if origin is localhost or local IP
+    const isLocal = origin.startsWith('http://localhost') || 
+                    origin.startsWith('http://127.0.0.1') || 
+                    origin.startsWith('http://192.168.') || 
+                    origin.startsWith('http://10.') ||
+                    origin.startsWith('http://172.'); // Docker/Vagrant/standard local ranges
+                    
+    if (isLocal || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
   credentials: true
@@ -98,6 +114,9 @@ app.use('/api/social-icons', socialIconsRoutes);
 
 const founderRoutes = require('./routes/founder');
 app.use('/api/founder', founderRoutes);
+
+const websiteContentRoutes = require('./routes/websiteContent');
+app.use('/api/website-content', websiteContentRoutes);
 
 // Serve uploaded files statically
 app.use('/uploads', express.static('uploads'));
